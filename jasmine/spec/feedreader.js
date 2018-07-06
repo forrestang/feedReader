@@ -32,31 +32,52 @@ $(function () {
      * and that the URL is not empty.
      */
     it('allFeeds Array has URL', () => {
-      let isLegit = true; //Value to check is has Url and not empty
+      let isLegitUrl = true; //Value to check is has Url and not empty
 
       allFeeds.forEach((item) => { //Loop through allFeeds
         if (item.url === undefined) { //Check if if Url has been defined.
-          isLegit = false;
+          isLegitUrl = false;
         }
 
         if (item.url !== undefined) { //Check length/type if Url has been defined
           if (item.url.length === 0) { //Check if Url is not empty
-            isLegit = false;
+            isLegitUrl = false;
           }
 
           if (typeof item.url !== 'string') { //make sure URL is a string
-            isLegit = false;
+            isLegitUrl = false;
           }
         }
       });
-
-      expect(isLegit).toBe(true); //Check if flag has been set
+      expect(isLegitUrl).toBe(true); //Check if flag has been set
     })
+
+
 
     /* TODO: Write a test that loops through each feed
      * in the allFeeds object and ensures it has a name defined
      * and that the name is not empty.
      */
+    it('allFeeds Array has NAME', () => {
+      let isLegitName = true; //Value to check is has Name and not empty
+
+      allFeeds.forEach((item) => { //Loop through allFeeds
+        if (item.name === undefined) { //Check if if Url has been defined.
+          isLegitName = false;
+        }
+
+        if (item.name !== undefined) { //Check length/type if Url has been defined
+          if (item.name.length === 0) { //Check if Url is not empty
+            isLegitName = false;
+          }
+
+          if (typeof item.name !== 'string') { //make sure URL is a string
+            isLegitName = false;
+          }
+        }
+      });
+      expect(isLegitName).toBe(true); //Check if flag has been set
+    })
   });
 
 
@@ -74,6 +95,10 @@ $(function () {
    * clicked and does it hide when clicked again.
    */
 
+
+
+
+
   /* TODO: Write a new test suite named "Initial Entries" */
 
   /* TODO: Write a test that ensures when the loadFeed
@@ -83,6 +108,13 @@ $(function () {
    * the use of Jasmine's beforeEach and asynchronous done() function.
    */
 
+
+
+
+
+
+
+   
   /* TODO: Write a new test suite named "New Feed Selection" */
 
   /* TODO: Write a test that ensures when a new feed is loaded
