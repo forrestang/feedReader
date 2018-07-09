@@ -81,8 +81,6 @@ $(function () {
 
   });
 
-
-
   /* TODO: Write a new test suite named "The menu" */
   describe('The menu', () => {
     /* TODO: Write a test that ensures the menu element is
@@ -90,7 +88,6 @@ $(function () {
      * the CSS to determine how we're performing the
      * hiding/showing of the menu element.
      */
-
     it('menu hidden by default', () => {  //Check if menu is hidden by default
       const menuIcon = document.querySelector('body');
       expect(menuIcon.classList.contains('menu-hidden')).toBe(true);
@@ -101,6 +98,40 @@ $(function () {
      * should have two expectations: does the menu display when
      * clicked and does it hide when clicked again.
      */
+    it('menu toggles', () => {  //Check if menu toggles states
+      let hasToggled = true; //this bool will represent toggle
+      const menuClass = document.querySelector('a.menu-icon-link');
+      const iconArray = [];
+      iconArray.push(document.querySelector('body').className);
+      console.log(iconArray);
+
+      menuClass.addEventListener('click', (event) => { //Add listener to hamburger icon
+        const myClick = event.target;
+        hasToggled = false;
+        iconArray.push(document.querySelector('body').className)
+
+        const myIndex = iconArray.length;
+
+        if (myClick.nodeName==="A") {
+          //Check if toggled class and menu open
+          if (iconArray[myIndex-1] !== iconArray[myIndex-2] &&  iconArray[myIndex-1] ==="") { 
+            hasToggled = true;
+
+          } 
+          //Check if toggled class and menu closed
+          else if (iconArray[myIndex-1] !== iconArray[myIndex-2] &&  iconArray[myIndex-1] ==="menu-hidden") {
+            hasToggled = true;
+          }
+          //Check if class wasn't toggled
+          if (iconArray[myIndex-1] === iconArray[myIndex-2] ) {
+            hasToggled = false;
+          }
+        }
+      });
+
+      //Error checking condition for jasmine. This should always be true unless class wasn't toggled
+      expect(hasToggled).toBe(true);  
+    });
   });
 
 
