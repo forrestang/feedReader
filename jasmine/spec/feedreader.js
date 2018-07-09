@@ -112,25 +112,25 @@ $(function () {
 
         const myIndex = iconArray.length;
 
-        if (myClick.nodeName==="A") {
+        if (myClick.nodeName === "A") {
           //Check if toggled class and menu open
-          if (iconArray[myIndex-1] !== iconArray[myIndex-2] &&  iconArray[myIndex-1] ==="") { 
+          if (iconArray[myIndex - 1] !== iconArray[myIndex - 2] && iconArray[myIndex - 1] === "") {
             hasToggled = true;
 
-          } 
+          }
           //Check if toggled class and menu closed
-          else if (iconArray[myIndex-1] !== iconArray[myIndex-2] &&  iconArray[myIndex-1] ==="menu-hidden") {
+          else if (iconArray[myIndex - 1] !== iconArray[myIndex - 2] && iconArray[myIndex - 1] === "menu-hidden") {
             hasToggled = true;
           }
           //Check if class wasn't toggled
-          if (iconArray[myIndex-1] === iconArray[myIndex-2] ) {
+          if (iconArray[myIndex - 1] === iconArray[myIndex - 2]) {
             hasToggled = false;
           }
         }
       });
 
       //Error checking condition for jasmine. This should always be true unless class wasn't toggled
-      expect(hasToggled).toBe(true);  
+      expect(hasToggled).toBe(true);
     });
   });
 
@@ -138,17 +138,17 @@ $(function () {
 
 
   /* TODO: Write a new test suite named "Initial Entries" */
-
-  /* TODO: Write a test that ensures when the loadFeed
-   * function is called and completes its work, there is at least
-   * a single .entry element within the .feed container.
-   * Remember, loadFeed() is asynchronous so this test will require
-   * the use of Jasmine's beforeEach and asynchronous done() function.
-   */
-
-
+  describe('Initial Entries', () => {
+    /* TODO: Write a test that ensures when the loadFeed
+     * function is called and completes its work, there is at least
+     * a single .entry element within the .feed container.
+     * Remember, loadFeed() is asynchronous so this test will require
+     * the use of Jasmine's beforeEach and asynchronous done() function.
+     */
 
 
+
+  });
 
 
 
