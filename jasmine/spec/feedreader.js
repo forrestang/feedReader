@@ -98,21 +98,31 @@ $(function () {
      * should have two expectations: does the menu display when
      * clicked and does it hide when clicked again.
      */
+    let hasToggled;
+    let menuClass;
+    let iconArray;
+
+    beforeEach(() => {
+      hasToggled = true; //this bool will represent toggle
+      menuClass = document.querySelector('a.menu-icon-link');
+      iconArray = [];
+    });
+
     it('menu toggles', () => {  //Check if menu toggles states
-      let hasToggled = true; //this bool will represent toggle
-      const menuClass = document.querySelector('a.menu-icon-link');
-      const iconArray = [];
+      // let hasToggled = true; //this bool will represent toggle
+      // const menuClass = document.querySelector('a.menu-icon-link');
+      // const iconArray = [];
       iconArray.push(document.querySelector('body').className);
-      console.log(iconArray);
+      // console.log(iconArray);
 
       menuClass.addEventListener('click', (event) => { //Add listener to hamburger icon
-        const myClick = event.target;
+        // const myClick = event.target;
         hasToggled = false;
         iconArray.push(document.querySelector('body').className)
 
         const myIndex = iconArray.length;
 
-        if (myClick.nodeName === "A") {
+        // if (myClick.nodeName === "A") {
           //Check if toggled class and menu open
           if (iconArray[myIndex - 1] !== iconArray[myIndex - 2] && iconArray[myIndex - 1] === "") {
             hasToggled = true;
@@ -126,11 +136,17 @@ $(function () {
           if (iconArray[myIndex - 1] === iconArray[myIndex - 2]) {
             hasToggled = false;
           }
-        }
+          // console.log(`${iconArray} :: ${hasToggled}`);
+          // expect(hasToggled).toEqual(true);
+        // }
       });
 
       //Error checking condition for jasmine. This should always be true unless class wasn't toggled
+      console.log(`${iconArray} :: ${hasToggled}`);
       expect(hasToggled).toBe(true);
+      // console.log(`${iconArray[iconArray.length - 1]}   ${iconArray[iconArray.length - 2]}`);
+      
+      // expect(iconArray[iconArray.length - 1]).not.toBe(iconArray[iconArray.length - 2]);
     });
   });
 
