@@ -52,7 +52,7 @@ $(function () {
 
 
 
-  
+
   /* TODO: Write a new test suite named "The menu" */
   describe('The menu', () => {
     /* TODO: Write a test that ensures the menu element is
@@ -117,9 +117,9 @@ $(function () {
     let secondLoad;
 
     beforeEach((done) => {
-      loadFeed(0, () => { //Run the loadFeed function BEFORE test spec
-        initialLoad = $("div.feed").html();
-        loadFeed(1, () => {
+      loadFeed(0, () => { //Run the load feed function and store first entity
+        initialLoad = $("div.feed").html(); //Caputure first entity info
+        loadFeed(1, () => { //Load 2nd entity and THEN process spec
           done();
         });
       });
