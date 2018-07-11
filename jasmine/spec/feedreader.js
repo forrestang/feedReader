@@ -89,8 +89,9 @@ $(function () {
      * hiding/showing of the menu element.
      */
     it('menu hidden by default', () => {  //Check if menu is hidden by default
-      const menuIcon = document.querySelector('body');
-      expect(menuIcon.classList.contains('menu-hidden')).toBe(true);
+      // const menuIcon = document.querySelector('body');
+      // expect(menuIcon.classList.contains('menu-hidden')).toBe(true);
+      expect($('body').hasClass('menu-hidden')).toEqual(true);
     });
 
     /* TODO: Write a test that ensures the menu changes
@@ -98,55 +99,11 @@ $(function () {
      * should have two expectations: does the menu display when
      * clicked and does it hide when clicked again.
      */
-    let hasToggled;
-    let menuClass;
-    let iconArray;
-
-    beforeEach(() => {
-      hasToggled = true; //this bool will represent toggle
-      menuClass = document.querySelector('a.menu-icon-link');
-      iconArray = [];
-    });
-
     it('menu toggles', () => {  //Check if menu toggles states
-      // let hasToggled = true; //this bool will represent toggle
-      // const menuClass = document.querySelector('a.menu-icon-link');
-      // const iconArray = [];
-      iconArray.push(document.querySelector('body').className);
-      // console.log(iconArray);
-
-      menuClass.addEventListener('click', (event) => { //Add listener to hamburger icon
-        // const myClick = event.target;
-        hasToggled = false;
-        iconArray.push(document.querySelector('body').className)
-
-        const myIndex = iconArray.length;
-
-        // if (myClick.nodeName === "A") {
-          //Check if toggled class and menu open
-          if (iconArray[myIndex - 1] !== iconArray[myIndex - 2] && iconArray[myIndex - 1] === "") {
-            hasToggled = true;
-
-          }
-          //Check if toggled class and menu closed
-          else if (iconArray[myIndex - 1] !== iconArray[myIndex - 2] && iconArray[myIndex - 1] === "menu-hidden") {
-            hasToggled = true;
-          }
-          //Check if class wasn't toggled
-          if (iconArray[myIndex - 1] === iconArray[myIndex - 2]) {
-            hasToggled = false;
-          }
-          // console.log(`${iconArray} :: ${hasToggled}`);
-          // expect(hasToggled).toEqual(true);
-        // }
-      });
-
-      //Error checking condition for jasmine. This should always be true unless class wasn't toggled
-      console.log(`${iconArray} :: ${hasToggled}`);
-      expect(hasToggled).toBe(true);
-      // console.log(`${iconArray[iconArray.length - 1]}   ${iconArray[iconArray.length - 2]}`);
-      
-      // expect(iconArray[iconArray.length - 1]).not.toBe(iconArray[iconArray.length - 2]);
+      $('.menu-icon-link').click();
+      expect($('body').hasClass('menu-hidden')).toEqual(false);
+      $('.menu-icon-link').click();
+      expect($('body').hasClass('menu-hidden')).toEqual(true);
     });
   });
 
