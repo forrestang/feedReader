@@ -26,59 +26,27 @@ $(function () {
       expect(allFeeds.length).not.toBe(0);
     });
 
-
     /* TODO: Write a test that loops through each feed
      * in the allFeeds object and ensures it has a URL defined
      * and that the URL is not empty.
      */
-    it('allFeeds Array has URL', () => {
-      let isLegitUrl = true; //Value to check is has Url and not empty
-
+    it('allFeeds Array has URL and not empty', () => {
       allFeeds.forEach((item) => { //Loop through allFeeds
-        if (item.url === undefined) { //Check if if Url has been defined.
-          isLegitUrl = false;
-        }
-
-        if (item.url !== undefined) { //Check length/type if Url has been defined
-          if (item.url.length === 0) { //Check if Url is not empty
-            isLegitUrl = false;
-          }
-
-          if (typeof item.url !== 'string') { //make sure URL is a string
-            isLegitUrl = false;
-          }
-        }
+        expect(item.url).toBeDefined();
+        expect(item.url.length).not.toBe(0);
       });
-      expect(isLegitUrl).toBe(true); //Check if flag has been set
     });
-
-
 
     /* TODO: Write a test that loops through each feed
      * in the allFeeds object and ensures it has a name defined
      * and that the name is not empty.
      */
-    it('allFeeds Array has NAME', () => {
-      let isLegitName = true; //Value to check is has Name and not empty
-
+    it('allFeeds Array has NAME and not empty', () => {
       allFeeds.forEach((item) => { //Loop through allFeeds
-        if (item.name === undefined) { //Check if if Url has been defined.
-          isLegitName = false;
-        }
-
-        if (item.name !== undefined) { //Check length/type if Url has been defined
-          if (item.name.length === 0) { //Check if Url is not empty
-            isLegitName = false;
-          }
-
-          if (typeof item.name !== 'string') { //make sure URL is a string
-            isLegitName = false;
-          }
-        }
+        expect(item.name).toBeDefined();
+        expect(item.name.length).not.toBe(0);
       });
-      expect(isLegitName).toBe(true); //Check if flag has been set
     });
-
   });
 
   /* TODO: Write a new test suite named "The menu" */
