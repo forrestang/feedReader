@@ -49,6 +49,10 @@ $(function () {
     });
   });
 
+
+
+
+  
   /* TODO: Write a new test suite named "The menu" */
   describe('The menu', () => {
     /* TODO: Write a test that ensures the menu element is
@@ -76,6 +80,7 @@ $(function () {
 
 
 
+
   /* TODO: Write a new test suite named "Initial Entries" */
   describe('Initial Entries', () => {
     /* TODO: Write a test that ensures when the loadFeed
@@ -85,14 +90,14 @@ $(function () {
      * the use of Jasmine's beforeEach and asynchronous done() function.
      */
 
-    beforeEach( (done) => {
-      loadFeed(0, ()=> { //Run the loadFeed function BEFORE test spec
+    beforeEach((done) => {
+      loadFeed(0, () => { //Run the loadFeed function BEFORE test spec
         done();
       });
     });
 
-    it('at least one .entry element in .feed container', () => {  
-      const myFeed = $( "div.feed .entry" ); //Get entry Children list
+    it('at least one .entry element in .feed container', () => {
+      const myFeed = $("div.feed .entry"); //Get entry Children list
       expect(myFeed.length).toBeGreaterThan(0); //Make sure list is not empty
     });
   });
@@ -100,10 +105,32 @@ $(function () {
 
 
 
-  /* TODO: Write a new test suite named "New Feed Selection" */
 
-  /* TODO: Write a test that ensures when a new feed is loaded
-   * by the loadFeed function that the content actually changes.
-   * Remember, loadFeed() is asynchronous.
-   */
+  /* TODO: Write a new test suite named "New Feed Selection" */
+  describe('New Feed Selection', () => {
+    /* TODO: Write a test that ensures when a new feed is loaded
+     * by the loadFeed function that the content actually changes.
+     * Remember, loadFeed() is asynchronous.
+     */
+
+    let initialLoad;
+    let secondLoad;
+
+    beforeEach((done) => {
+      loadFeed(0, () => { //Run the loadFeed function BEFORE test spec
+        initialLoad = $("div.feed").html();
+        loadFeed(1, () => {
+          done();
+        });
+      });
+    });
+
+    // Compare initial .feed list to .feed list AFTER it has loaded
+    it('.entry content actually changes', () => {
+      secondLoad = $("div.feed").html();
+      expect(secondLoad).not.toBe(initialLoad);
+    });
+
+  });
+
 }());
