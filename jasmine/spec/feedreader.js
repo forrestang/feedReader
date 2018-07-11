@@ -57,8 +57,6 @@ $(function () {
      * hiding/showing of the menu element.
      */
     it('menu hidden by default', () => {  //Check if menu is hidden by default
-      // const menuIcon = document.querySelector('body');
-      // expect(menuIcon.classList.contains('menu-hidden')).toBe(true);
       expect($('body').hasClass('menu-hidden')).toEqual(true);
     });
 
@@ -87,8 +85,16 @@ $(function () {
      * the use of Jasmine's beforeEach and asynchronous done() function.
      */
 
+    beforeEach( (done) => {
+      loadFeed(0, ()=> { //Run the loadFeed function BEFORE test spec
+        done();
+      });
+    });
 
-
+    it('at least one .entry element in .feed container', () => {  
+      const myFeed = $( "div.feed .entry" ); //Get entry Children list
+      expect(myFeed.length).toBeGreaterThan(0); //Make sure list is not empty
+    });
   });
 
 
