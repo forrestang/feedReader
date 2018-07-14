@@ -130,7 +130,6 @@ $(function () {
       secondLoad = $("div.feed").html();
       expect(secondLoad).not.toBe(initialLoad);
     });
-
   });
 
 }());
